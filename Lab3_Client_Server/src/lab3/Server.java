@@ -16,38 +16,34 @@ import java.util.ArrayList;
 public class Server {
     
     
-    private static ServerSocket mainSock;
-    private static ArrayList<Note> archive = new ArrayList<Note> ();
+    private ServerSocket mainSock;
+    private ArrayList<Note> archive = new ArrayList<Note> ();
     
-    public static void doArchive(Socket current, Note note) throws IOException {
+    public void doArchive(Socket current, Note note) throws IOException {
         archive.add(note);
         DataOutputStream out = new DataOutputStream(current.getOutputStream());
         out.writeUTF("Archived Successfully");
     }
     
-    public static void doRetrieve(Socket current, Note note) throws IOException{
-        int flag = 0;
+    public void doRetrieve(Socket current, Note note) throws IOException{
+        ObjectOutputStream outObj = new ObjectOutputStream(current.getOutputStream());
         for (Note a : archive){
             if (note.getUserName().equals(a.getUserName())){
-                note.setText(a.getText());
-                flag = 1;
-                break;
+                outObj.writeObject(a);
             }
         }
-        if (flag == 0)
-            note.setText("No notes for the given username");
-        ObjectOutputStream outObj = new ObjectOutputStream(current.getOutputStream());
+        note = new Note(0,note.getUserName(),"");
         outObj.writeObject(note);
+        outObj.close();
     }
     
-    public static void main(String args[]) throws ClassNotFoundException {
-
+    public Server() throws ClassNotFoundException{
         try {
             mainSock = new ServerSocket(60000);
             while (true) {
                 
                 Socket current = mainSock.accept();
-                System.out.println("Connected to " + current.getRemoteSocketAddress());
+                //System.out.println("Connected to " + current.getRemoteSocketAddress());
                 
                 ObjectInputStream in = new ObjectInputStream(current.getInputStream());
                 Note note = (Note)in.readObject();
@@ -58,14 +54,21 @@ public class Server {
                 else if (note.getOperation() == 1){
                     doRetrieve(current, note);
                 }
-                else {System.out.println("We're screwed");}
+                else {//System.out.println("We're screwed");
+                    
+                }
                 
                 current.close();
             }
         } catch (IOException e) {
-            e.printStackTrace(System.out);
+            //e.printStackTrace(System.out);
         }
 
+    }
+    
+    public static void main(String args[]) throws ClassNotFoundException {
+
+            Server s = new Server();
     }
 
 }

@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class Client {
 
-    public static void archive(String serverName, int port) {
+    public void archive(String serverName, int port) {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter the username: ");
@@ -23,6 +23,10 @@ public class Client {
         System.out.println("Enter the text: ");
         String text = input.nextLine();
 
+        doArchive(serverName, port, username, text);
+    }
+
+    public void doArchive(String serverName, int port, String username, String text) {
         Note note = new Note(0, username, text);
 
         try {
@@ -36,13 +40,6 @@ public class Client {
             DataInputStream in
                     = new DataInputStream(inFromServer);
             System.out.println(in.readUTF());
-            /*
-            Note rcvNote = new Note(1, "zaheer");
-            out.writeObject(rcvNote);
-
-            ObjectInputStream inObj = new ObjectInputStream(client.getInputStream());
-            rcvNote = (Note) inObj.readObject();
-            System.out.println(rcvNote);*/
             client.close();
 
         } catch (IOException e) {
@@ -50,12 +47,15 @@ public class Client {
         }
     }
 
-    public static void retrieve(String serverName, int port) throws ClassNotFoundException {
+    public void retrieve(String serverName, int port) throws ClassNotFoundException {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter the username: ");
         String username = input.nextLine();
+        doRetrieve(serverName, port, username);
+    }
 
+    public void doRetrieve(String serverName, int port, String username) throws ClassNotFoundException{
         Note note = new Note(1, username);
 
         try {
@@ -66,8 +66,14 @@ public class Client {
             out.writeObject(note);
 
             ObjectInputStream inObj = new ObjectInputStream(client.getInputStream());
-            note = (Note) inObj.readObject();
-            System.out.println(note);
+            while (true) {
+                note = (Note) inObj.readObject();
+                if (note.getText().equals("")) {
+                    System.out.println("Retrieval done");
+                    break;
+                }
+                System.out.println(note.getText());
+            }
             client.close();
 
         } catch (IOException e) {
@@ -75,7 +81,15 @@ public class Client {
         }
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public Client(String test) throws ClassNotFoundException {
+        String serverName = "127.0.0.1";
+        int port = 60000;
+        doArchive(serverName, port, "zaheer", "zaheer's text");
+        doRetrieve(serverName, port, "zaheer");
+
+    }
+
+    public Client() throws ClassNotFoundException {
         String serverName = "127.0.0.1";
         int port = 60000;
 
@@ -89,9 +103,15 @@ public class Client {
             } else {
                 retrieve(serverName, port);
             }
-            System.out.println("Press 'q' to quit or any other key to continue...");
+            System.out.println("Enter 'q' to quit or any other key to continue...");
             q = in.nextLine().charAt(0);
         }
+
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException {
+
+        Client c = new Client();
 
     }
 }
