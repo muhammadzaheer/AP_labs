@@ -6,7 +6,7 @@ the user to search for a particular keyword.
 Spider's API:
 
 s.index (File root)
-    Builts an in memory index for root
+    Builts an in memory index for root.
     Accepts a file handler of your root directory
 
 s.search (String keyword)
