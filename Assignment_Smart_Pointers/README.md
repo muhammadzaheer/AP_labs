@@ -66,7 +66,7 @@ In my solution, all memory leaks have been taken care of.
 
 Note: You need to install Visual Leak Detector separately before using it
 
-Profiling Results Summary
+Profiling Data Summary
 ==========================
 
 StringBufferCP had largest memory foot print since it involves deep 
@@ -79,7 +79,7 @@ application involves frequent appends (write), memory footprint becomes
 comparable to that of StringBufferCP since StringBufferRC and StringBufferRL 
 perform deep copy upon write.
 
-Profiling results for test cases can be found in profile_result dir within the 
+Profiling results for test cases can be found in profile_date dir within the 
 project's root directory.
 
 Author: M. Zaheer

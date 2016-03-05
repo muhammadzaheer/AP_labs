@@ -1,0 +1,6 @@
+Mark ID,Mark Name,Timestamp,\Processor(_Total)\% Processor Time,\Memory\Pages/sec,\Processor(_Total)\% Privileged Time,\Processor(_Total)\% User Time,\.NET CLR Exceptions(Assignment_Smart_Pointers)\# of Exceps Thrown / sec,\.NET CLR Memory(Assignment_Smart_Pointers)\# Bytes in all Heaps,\.NET CLR Memory(Assignment_Smart_Pointers)\# Total committed bytes,\.NET CLR Memory(Assignment_Smart_Pointers)\# Gen 0 Collections,\.NET CLR Memory(Assignment_Smart_Pointers)\# Gen 1 Collections,\.NET CLR Memory(Assignment_Smart_Pointers)\# Gen 2 Collections,\.NET CLR Memory(Assignment_Smart_Pointers)\% Time in GC,\Process(Assignment_Smart_Pointers)\% Processor Time,\Process(Assignment_Smart_Pointers)\% Privileged Time,\Process(Assignment_Smart_Pointers)\% User Time,\Process(Assignment_Smart_Pointers)\Private Bytes,\.NET CLR LocksAndThreads(Assignment_Smart_Pointers)\Contention Rate / sec,\Process(Assignment_Smart_Pointers)\Working Set,
+0,"Start of Program",0.00,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,"AutoMark",0.00,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+2,"AutoMark",501.00,17,13,6,9,0,0,0,0,0,0,0,0,0,0,0,0,0,
+"4,294,967,295","End of Program","1,006.56",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+3,"AutoMark","1,006.56",14,0,4,9,0,0,0,0,0,0,0,0,0,0,0,0,0,
