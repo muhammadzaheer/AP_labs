@@ -12,17 +12,13 @@ This project provides implementation of Smart Strings using 4 approaches
 
 Open this project in Visual Studio. Under header files, you will see:
 
-1. StringBufferCP.h
-  Declaration of StringBuffer class with copied pointers.
+1. StringBufferCP.h: Declaration of StringBuffer class with copied pointers.
 
-2. StringBufferOP.h
-  Declaration of StringBuffer class with Owned Pointers.
+2. StringBufferOP.h: Declaration of StringBuffer class with Owned Pointers.
 
-3. StringBufferRC.h
-  Declaration of StringBuffer class with Reference Counting and COW.
+3. StringBufferRC.h: Declaration of StringBuffer class with Reference Counting and COW.
 
-4. StringBufferRL.h
-  Declaration of StringBuffer class with Reference Linking and COW.
+4. StringBufferRL.h: Declaration of StringBuffer class with Reference Linking and COW.
 
 Similarly, in source files, you will see implementations of each of these
 classes. In addition to these files, you have Test.h (under headers section), 
@@ -45,6 +41,12 @@ or read from the StringBuffer object. If you append or read without calling
 reserve, an exception of type char ('e') will be thrown.
 Similarly if you run out of your reserved space while appending, an exception 
 will be thrown. 
+
+For constructor StringBuffer(char *, int):
+StringBuffer internal resource pointer starts pointing to the char * passed.
+The total size of buffer is set to be equal to the int parameter passed.
+No data, whatsoever, is copied from the passed buffer. Subsequent append calls
+start writing from position 0 onward.
 
 To run the solution
 ====================
@@ -76,6 +78,9 @@ StringBufferRC and StringBufferRL resulted in similar resource usage. If
 application involves frequent appends (write), memory footprint becomes 
 comparable to that of StringBufferCP since StringBufferRC and StringBufferRL 
 perform deep copy upon write.
+
+Profiling results for test cases can be found in profile_result dir within the 
+project's root directory.
 
 Author: M. Zaheer
 
