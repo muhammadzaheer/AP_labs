@@ -1,4 +1,4 @@
-Introduction:
+Introduction
 =============
 This project provides implementation of Smart Strings using 4 approaches
 
@@ -28,14 +28,14 @@ Similarly, in source files, you will see implementations of each of these
 classes. In addition to these files, you have Test.h (under headers section), 
 Test.cpp (under source section) and main.cpp (entry point for the solution).
 
-Testing:
+Testing
 =======
 
 Test Class provides unit test coverage of all 4 approaches. It is important
 to note that all StringBuffer implementations have befriended Test class so 
 that it could access private methods of these classes and test them. 
 
-Assumptions:
+Assumptions
 ===========
 
 It is important to highlight that reserve function is treated as a starting 
@@ -46,7 +46,7 @@ reserve, an exception of type char ('e') will be thrown.
 Similarly if you run out of your reserved space while appending, an exception 
 will be thrown. 
 
-To run the solution:
+To run the solution
 ====================
 Download this this project, open it with Visual Studio and run the project (without debugging).
 Upon running the project, main.cpp will be executed which calls test cases
@@ -54,7 +54,17 @@ over all 4 classes.
 
 Test.cpp also demonstrates sample usage of StringBuffer API.
 
-Profiling Results Summary:
+Memory Leak Detection
+======================
+Memory leaks were detected using the tool "Visual Leak Detector". 
+In main.cpp, if you uncomment the statement "#include <vld.h>" and
+execute the solution in Debug mode, VLD would output memory leaks.
+
+In my solution, all memory leaks have been taken care of.
+
+Note: You need to install Visual Leak Detector separately before using it
+
+Profiling Results Summary
 ==========================
 
 StringBufferCP had largest memory foot print since it involves deep 
@@ -68,5 +78,6 @@ comparable to that of StringBufferCP since StringBufferRC and StringBufferRL
 perform deep copy upon write.
 
 Author: M. Zaheer
+
 Github Link: https://github.com/muhammadzaheer/AP_labs/tree/master/Assignment_Smart_Pointers 
 
