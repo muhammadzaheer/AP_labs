@@ -14,6 +14,9 @@ API:
 3. CityManager.searchCity(latitude, longitude)
 4. CityManager.searchNearby(city)
 
+How to run:
+Download the directory and open it with Netbeans.
+
 Test:
 lab5.Test.java: Tests all corresponding functions
 
