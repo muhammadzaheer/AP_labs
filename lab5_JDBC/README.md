@@ -10,8 +10,11 @@ This lab uses JDBC to load a CSV file of City Data into a MYSQL database.
 
 API:
 1. CityManager.createTable()
+
 2. CityManager.readCSV(csFileName)
+
 3. CityManager.searchCity(latitude, longitude)
+
 4. CityManager.searchNearby(city)
 
 How to run:
