@@ -31,4 +31,4 @@ Before outputting search results, list is converted to a set for
 removing duplicates.
 
 Author: M. Zaheer
-Github URL: https://github.com/muhammadzaheer/AP_labs/tree/master/Lab6_Spider 
+Github URL: https://github.com/muhammadzaheer/AP_labs/tree/master/Lab6_Multithread_Spider
