@@ -1,0 +1,5 @@
+Let y = 0;
+Let x = 5;
+Let y+x = 3;
+y+x = x;
+Print y+x;

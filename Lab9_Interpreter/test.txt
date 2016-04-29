@@ -1,0 +1,7 @@
+Let x = 5;
+Let y = 20;
+Print y;
+x = x + 100;
+y = x;
+Print x;
+Print y;
