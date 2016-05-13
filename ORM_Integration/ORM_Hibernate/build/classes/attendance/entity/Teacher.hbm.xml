@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 3, 2016 10:26:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="attendance.entity.Teacher" table="teacher" catalog="attendance_total" optimistic-lock="version">
+        <id name="teacherid" type="java.lang.Integer">
+            <column name="teacherid" />
+            <generator class="identity" />
+        </id>
+        <property name="fullname" type="string">
+            <column name="fullname" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
+        </property>
+        <property name="position" type="string">
+            <column name="position" length="45" not-null="true" />
+        </property>
+        <set name="courses" table="course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherid" not-null="true" />
+            </key>
+            <one-to-many class="attendance.entity.Course" />
+        </set>
+    </class>
+</hibernate-mapping>

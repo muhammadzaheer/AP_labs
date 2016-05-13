@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/attendance_total</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="use_sql_comments">false</property>
+    <!-- Auto Generate my tables please!-->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping resource="attendance/entity/Attendance.hbm.xml"/>
+    <mapping resource="attendance/entity/Course.hbm.xml"/>
+    <mapping resource="attendance/entity/Student.hbm.xml"/>
+    <mapping resource="attendance/entity/Teacher.hbm.xml"/>
+    <mapping class="gradebook.entity.Clo"/>
+    <mapping class="gradebook.entity.Content"/>
+    <mapping class="gradebook.entity.Course"/>
+    <mapping class="gradebook.entity.Grade"/>
+    <mapping class="gradebook.entity.Student"/>
+    <mapping class="gradebook.entity.Teacher"/>
+    
+    
+    
+  </session-factory>
+</hibernate-configuration>
