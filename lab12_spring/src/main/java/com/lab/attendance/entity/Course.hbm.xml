@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 3, 2016 10:26:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="attendance.entity.Course" table="course" catalog="attendance_total" optimistic-lock="version">
+        <id name="courseid" type="java.lang.Integer">
+            <column name="courseid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="teacher" class="attendance.entity.Teacher" fetch="select">
+            <column name="teacherid" not-null="true" />
+        </many-to-one>
+        <property name="classtitle" type="string">
+            <column name="classtitle" length="45" not-null="true" />
+        </property>
+        <property name="starttime" type="time">
+            <column name="starttime" length="8" not-null="true" />
+        </property>
+        <property name="endtime" type="time">
+            <column name="endtime" length="8" not-null="true" />
+        </property>
+        <property name="creditHours" type="int">
+            <column name="credit_hours" not-null="true" />
+        </property>
+        <set name="attendances" table="attendance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="classid" not-null="true" />
+            </key>
+            <one-to-many class="attendance.entity.Attendance" />
+        </set>
+    </class>
+</hibernate-mapping>
